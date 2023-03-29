@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/abalone-age-app.iml" filepath="$PROJECT_DIR$/.idea/abalone-age-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../trash-detection-api/.idea/trash-detection-api.iml" filepath="$PROJECT_DIR$/../trash-detection-api/.idea/trash-detection-api.iml" />
     </modules>
   </component>
 </project>

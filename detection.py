@@ -40,7 +40,7 @@ def image2tensor(image):
     return np.expand_dims(npim, axis=0)
 
 
-def detect(detection_graph, test_image_path):
+def detect(detection_graph, test_image_path, filename):
     with detection_graph.as_default():
         gpu_options = tf.compat.v1.GPUOptions(per_process_gpu_memory_fraction=0.01)
         with tf.compat.v1.Session(graph=detection_graph,config=tf.compat.v1.ConfigProto(gpu_options=gpu_options)) as sess:
@@ -67,8 +67,8 @@ def detect(detection_graph, test_image_path):
                 line_thickness=15)
             plt.figure(figsize=(12, 8))
             plt.imshow(npim)
-            #plt.show()
-            #streamlit.pyplot(plt)
+            #Save plot as an image file.
+            plt.savefig(filename)
 
 # path to TACO data
 DATA_DIR = 'content/TACO/data'

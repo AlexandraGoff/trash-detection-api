@@ -2,14 +2,9 @@ import streamlit
 
 import detection
 import streamlit as st
-import pickle
-import numpy as np
-import PIL
-from io import StringIO
-import pandas as pd
 
-
-
+# Streamlit Prototype APP
+# To run : streamlit prototype-app.py
 
 st.set_page_config(
     page_title="Trash Detection App",
@@ -23,13 +18,6 @@ image = Image.open('ecology.jpg')
 
 st.image(image,
       use_column_width=True)
-
-
-def predict_age(Length,Diameter,Height,Whole_weight,Shucked_weight,Viscera_weight,Shell_weight):
-    input=np.array([[Length,Diameter,Height,Whole_weight,Shucked_weight,Viscera_weight,Shell_weight]]).astype(np.float64)
-    prediction = model.predict(input)
-    #pred = '{0:.{1}f}'.format(prediction[0][0], 2)
-    return int(prediction)
 
 
 def main():
