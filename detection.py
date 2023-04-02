@@ -1,7 +1,5 @@
-import streamlit
 import os
 import numpy as np
-import pprint
 import json
 from google.protobuf import text_format
 import tensorflow as tf
@@ -19,7 +17,7 @@ def reconstruct(pb_path):
     if not os.path.isfile(pb_path):
         print("Error: %s not found" % pb_path)
 
-    print("Reconstructing Tensorflow model")
+    #print("Reconstructing Tensorflow model")
     detection_graph = tf.Graph()
     with detection_graph.as_default():
         od_graph_def = tf.compat.v1.GraphDef()
@@ -27,7 +25,7 @@ def reconstruct(pb_path):
             serialized_graph = fid.read()
             od_graph_def.ParseFromString(serialized_graph)
             tf.import_graph_def(od_graph_def, name='')
-    print("Success!")
+    #print("Success!")
     return detection_graph
 
 # visualize detection
@@ -80,7 +78,7 @@ with open(ANNOTATIONS_FILE) as json_file:
 
 categories = data['categories']
 
-print('Building label map from examples')
+#print('Building label map from examples')
 
 labelmap = string_int_label_map_pb2.StringIntLabelMap()
 for idx, category in enumerate(categories):
@@ -89,13 +87,13 @@ for idx, category in enumerate(categories):
     item.id = int(category['id']) + 1
     item.name = category['name']
 
-with open('./labelmap.pbtxt', 'w') as f:
-    f.write(text_format.MessageToString(labelmap))
+#with open('./labelmap.pbtxt', 'w') as f:
+   # f.write(text_format.MessageToString(labelmap))
 
-print('Label map witten to labelmap.pbtxt')
+#print('Label map witten to labelmap.pbtxt')
 
 #with open('./labelmap.pbtxt') as f:
-   # pprint.pprint(f.readlines())
+   # print.pprint(f.readlines())
 
 label_map = label_map_util.load_labelmap('labelmap.pbtxt')
 categories = label_map_util.convert_label_map_to_categories(label_map, max_num_classes=NCLASSES, use_display_name=True)
@@ -103,11 +101,3 @@ category_index = label_map_util.create_category_index(categories)
 
 detection_graph = reconstruct('content/input/trained_models/ssd_mobilenet_v2_taco_2018_03_29.pb')
 
-# Test detection on images
-#detect(detection_graph, 'content/data/batch_1/000000.jpg')
-
-#detect(detection_graph, 'content/data/batch_1/000001.jpg')
-
-#detect(detection_graph, 'content/data/batch_1/000003.jpg')
-
-#detect(detection_graph, 'content/data/batch_1/000010.jpg')
