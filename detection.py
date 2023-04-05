@@ -1,11 +1,9 @@
 import os
 import numpy as np
 import json
-from google.protobuf import text_format
 import tensorflow as tf
 from PIL import Image
 from matplotlib import pyplot as plt
-import object_detection
 
 
 from object_detection.utils import visualization_utils as vis_util
@@ -84,7 +82,7 @@ categories = data['categories']
 labelmap = string_int_label_map_pb2.StringIntLabelMap()
 for idx, category in enumerate(categories):
     item = labelmap.item.add()
-    # label map id 0 is reserved for the background label
+    #label map id 0 is reserved for the background label
     item.id = int(category['id']) + 1
     item.name = category['name']
 
