@@ -1,6 +1,7 @@
 import base64
 import json
 import os
+from waitress import serve
 
 import flask
 from flask import request
@@ -50,5 +51,5 @@ def process_image():
 if __name__ == "__main__":
 
     print('Starting the API')
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    port = int(os.environ.get('PORT', 8080))
+    serve(app, host="0.0.0.0", port=port)
