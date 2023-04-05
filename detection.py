@@ -5,6 +5,7 @@ from google.protobuf import text_format
 import tensorflow as tf
 from PIL import Image
 from matplotlib import pyplot as plt
+import object_detection
 
 
 from object_detection.utils import visualization_utils as vis_util

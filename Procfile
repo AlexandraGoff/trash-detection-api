@@ -1,1 +1,1 @@
-web: python server.py
+web: python install_deps.py && python server.py
