@@ -1,1 +1,1 @@
-web: python install_deps.py && python server.py
+web: python install_object_detection.py && python server.py
