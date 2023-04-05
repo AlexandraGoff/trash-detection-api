@@ -1,6 +1,6 @@
 FROM python:3.8-slim-buster
 
-RUN apt-get update && \
+RUN apt-get update && apt-get install -y git \
     apt-get install -y protobuf-compiler && \
     rm -rf /var/lib/apt/lists/*
 
