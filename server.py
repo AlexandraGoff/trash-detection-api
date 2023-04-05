@@ -7,7 +7,6 @@ from flask import request
 
 import detection
 
-
 app = flask.Flask(__name__)
 def decode_b64(image):
     decoded_data = base64.b64decode(json.loads(image)["data"])
@@ -51,4 +50,5 @@ def process_image():
 if __name__ == "__main__":
 
     print('Starting the API')
-    app.run(host="0.0.0.0", port=5000, debug=True, use_reloader=False, threaded=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
