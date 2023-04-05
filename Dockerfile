@@ -47,4 +47,4 @@ ENV PORT=8080
 EXPOSE 8080
 
 # Start the Waitress server
-CMD ["waitress-serve", "--port=8080", "server:app"]
+CMD ["waitress-server", "--port=8080", "server:app"]
