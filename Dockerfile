@@ -36,7 +36,7 @@ RUN cd models/research \
 COPY . /app
 
 # Make port 5000 available to the world outside this container
-EXPOSE 5000
+EXPOSE 8080
 
 # Define environment variables
 ENV FLASK_APP=server.py
@@ -47,4 +47,4 @@ ENV PORT=8080
 EXPOSE 8080
 
 # Start the Waitress server
-CMD ["waitress-server", "--port=8080", "server:app"]
+CMD ["waitress-serve", "--port=8080", "server:app"]
